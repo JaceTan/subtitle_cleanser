@@ -34,12 +34,15 @@ def getNextSubtitleBlock(subsFile):
     }
 
     lineCounter = 0 # Limit 7 lines read to prevent reading until the end of file
-    while nextline != "" and lineCounter < 7:
+    while lineCounter < 7:
         lineCounter += 1
 
         # Read the next line
         nextline = subsFile.readline().strip()
         print(nextline)
+
+        if nextline == "": # End of the subtitle block
+            break
 
         # Check if line contains a Byte Order Mark (BOM) character and remove it
         BOMChar = re.search("\uFEFF", nextline)
