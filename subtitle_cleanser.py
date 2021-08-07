@@ -39,13 +39,16 @@ def getNextSubtitleBlock(subsFile):
 
         # Read the next line
         nextline = subsFile.readline().strip()
+        print(nextline)
 
         # Check if line contains a Byte Order Mark (BOM) character and remove it
         BOMChar = re.search("\uFEFF", nextline)
         if BOMChar:
             nextline = re.sub("\uFEFF", "", nextline)
 
-        print(nextline)
+        if lineCounter == 1 and nextline.isnumeric(): # Ignore the Section Index Number
+            continue
+
 
     return subtitleBlock
 
