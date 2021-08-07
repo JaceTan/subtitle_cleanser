@@ -8,7 +8,7 @@ def getNextSubtitleBlock(subsFile):
     identify, create and return a subtitleBlock dictionary.
 
     A subtitle block should have the following pattern:
-    Section Index Number
+    Subtitle Block Number
     Timestamp --> Timestamp
     Content Line1
     Content Line2 or Newline
@@ -48,7 +48,7 @@ def getNextSubtitleBlock(subsFile):
         if re.search("\uFEFF", nextline):
             nextline = re.sub("\uFEFF", "", nextline)
 
-        # Ignore the Section Index Number
+        # Ignore the subtitle block number
         if lineCounter == 1 and nextline.isnumeric():
             continue
 
