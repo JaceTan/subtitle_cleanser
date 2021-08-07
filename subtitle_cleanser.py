@@ -41,14 +41,16 @@ def getNextSubtitleBlock(subsFile):
         nextline = subsFile.readline().strip()
         print(nextline)
 
-        if nextline == "": # End of the subtitle block
+        # End of the subtitle block
+        if nextline == "":
             break
 
         # If nextline contains a Byte Order Mark (BOM), remove it
         if re.search("\uFEFF", nextline):
             nextline = re.sub("\uFEFF", "", nextline)
 
-        if lineCounter == 1 and nextline.isnumeric(): # Ignore the Section Index Number
+        # Ignore the Section Index Number
+        if lineCounter == 1 and nextline.isnumeric():
             continue
 
 
