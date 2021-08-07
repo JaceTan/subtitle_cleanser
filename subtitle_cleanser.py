@@ -26,8 +26,13 @@ def getNextSubtitleBlock(subsFile):
 
     Returns
     -------
-    Dictionary. The next subtitleBlock in distinct components.
+    Dictionary. The subtitleBlock containing the timestamp and content.
     """
+    subtitleBlock = {
+        "timestamp": "",
+        "content": [],
+    }
+
     lineCounter = 0 # Limit 7 lines read to prevent reading until the end of file
     while nextline != "" and lineCounter < 7:
         lineCounter += 1
@@ -41,6 +46,8 @@ def getNextSubtitleBlock(subsFile):
             nextline = re.sub("\uFEFF", "", nextline)
 
         print(nextline)
+
+    return subtitleBlock
 
 def main():
     # Open the subtitle file
