@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+import re
+
 def getNextSubtitleBlock(subsFile):
     """
     Reads the few next lines of the subtitle file to
@@ -32,6 +34,12 @@ def getNextSubtitleBlock(subsFile):
 
         # Read the next line
         nextline = subsFile.readline().strip()
+
+        # Check if line contains a Byte Order Mark (BOM) character and remove it
+        BOMChar = re.search("\uFEFF", nextline)
+        if BOMChar:
+            nextline = re.sub("\uFEFF", "", nextline)
+
         print(nextline)
 
 def main():
