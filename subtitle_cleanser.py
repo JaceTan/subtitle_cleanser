@@ -53,6 +53,10 @@ def getNextSubtitleBlock(subsFile):
         if lineCounter == 1 and nextline.isnumeric():
             continue
 
+        # Identify and save the timestamp line
+        if lineCounter == 2 and re.match("\d{2}:\d{2}:\d{2},\d{3} --> \d{2}:\d{2}:\d{2},\d{3}", nextline):
+            subtitleBlock["timestamp"] = nextline
+            continue
 
     return subtitleBlock
 
