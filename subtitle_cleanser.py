@@ -26,6 +26,13 @@ def getNextSubtitleBlock(subsFile):
     -------
     Dictionary. The next subtitleBlock in distinct components.
     """
+    nextline = subsFile.readline().strip()
+
+    lineCounter = 0 # Limit 7 lines read to prevent reading until the end of file
+    while nextline != "" and lineCounter <= 7:
+        print(nextline)
+        nextline = subsFile.readline().strip()
+        lineCounter += 1
 
 def main():
     # Open the subtitle file
