@@ -39,7 +39,6 @@ def getNextSubtitleBlock(subsFile):
 
         # Read the next line
         nextline = subsFile.readline().strip()
-        print(nextline)
 
         # End of the subtitle block
         if nextline == "":
@@ -58,6 +57,9 @@ def getNextSubtitleBlock(subsFile):
             subtitleBlock["timestamp"] = nextline
             continue
 
+        # All subsequent lines are content
+        subtitleBlock["content"].append(nextline)
+
     return subtitleBlock
 
 def main():
@@ -75,7 +77,6 @@ def main():
     # Read enough lines for the first block
     subtitleBlock = getNextSubtitleBlock(subsFile)
 
-    # Determine which lines are content lines (could be 1, 2 or even 3 lines)
     # Run the content lines through multiple stages of cleansing
     # Determine if there's any content lines left
     # If yes, write to a new file
