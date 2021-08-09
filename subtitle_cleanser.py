@@ -114,14 +114,23 @@ def main():
         print("Unable to find or open the file: {}.".format(filename))
         return
 
-    # Read enough lines for the first block
-    subtitleBlock = getNextSubtitleBlock(subsFile)
+    while True:
+        # Read enough lines for the first block
+        subtitleBlock = getNextSubtitleBlock(subsFile)
 
-    # Run the content lines through multiple stages of cleansing
-    subtitleBlock = removeBracketedContent(subtitleBlock)
+        # Exit the loop once None is returned, marking EOF
+        if not subtitleBlock:
+            break
 
-    # Determine if there's any content lines left
-    # If yes, write to a new file
-    # If no, skip the whole block
+        # Run the content lines through multiple stages of cleansing
+        subtitleBlock = removeBracketedContent(subtitleBlock)
+        print(subtitleBlock)
+
+        # If there's no more content, skip to the next subtitleBlock
+        if subtitleBlock["content"] == []:
+            continue
+
+        # Process remaning content to have even lines
+        # Write remaining to a new file
 
 main()
