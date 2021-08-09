@@ -78,7 +78,7 @@ def removeBracketedContent(subtitleBlock):
     Returns
     -------
     Dictionary. The subtitleBlock containing the timestamp and content,
-                after all bracketed content have been removed.
+                after all bracketed content has been removed.
     """
     content = []
 
@@ -100,6 +100,22 @@ def removeBracketedContent(subtitleBlock):
             content.append(line)
 
     subtitleBlock["content"] = content
+    return subtitleBlock
+
+def removeSpeakerName(subtitleBlock):
+    """
+    Checks the contents of a subtitleBlock and removes
+    all speaker names and their corresponding colon.
+
+    Parameters
+    ----------
+    subtitleBlock: Dictionary. The subtitleBlock containing the timestamp and content.
+
+    Returns
+    -------
+    Dictionary. The subtitleBlock containing the timestamp and content,
+                after all speaker names and colons have been removed.
+    """
     return subtitleBlock
 
 def main():
