@@ -131,6 +131,18 @@ def cleanupContent(subtitleBlock):
     Dictionary. The subtitleBlock containing the timestamp, content,
     and preceding-hyphens after all cleanup has been performed.
     """
+    content = []
+
+    for line in subtitleBlock["content"]:
+        # Fix double symbols and spaces except periods
+        line = re.sub("([\s,?!-*@]){2}", r"\1", line)
+
+        # Fix exception for double periods vs ellipses
+        line = re.sub("\.\.[^\.]", ".", line)
+
+        content.append(line)
+
+    subtitleBlock["content"] = content
     return subtitleBlock
 
 def main():
