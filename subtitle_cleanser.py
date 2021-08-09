@@ -77,6 +77,26 @@ def removeBracketedContent(subtitleBlock):
     Dictionary. The subtitleBlock containing the timestamp and content,
                 after all bracketed content and markup tags have been removed.
     """
+    content = []
+
+    for line in subtitleBlock["content"]:
+        # Remove all regualar () pairs if any
+        line = re.sub("\(.*\)", "", line).strip()
+
+        # Remove all square bracket [] pairs if any
+        line = re.sub("\[.*\]", "", line).strip()
+
+        # Remove all angular bracket <></> pairs if any, but leave content between them
+        line = re.sub("\<.*\>(.*)\<\/.*\>", r"\1", line).strip()
+
+        # Remove all musical notes ♪ ♪ pairs if any
+        line = re.sub("♪", "", line).strip()
+
+        # Only add if line still has any characters
+        if line:
+            content.append(line)
+
+    subtitleBlock["content"] = content
     return subtitleBlock
 
 def main():
