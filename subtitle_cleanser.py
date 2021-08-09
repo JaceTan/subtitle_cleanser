@@ -146,6 +146,9 @@ def cleanupContent(subtitleBlock):
         # Remove spaces before sentence puntuation
         line = re.sub("(\w)\s([\.,?!])", r"\1\2", line)
 
+        # Fix common contractions with spaces
+        line = re.sub("(\w)\s'(s|ll|t|re|d|m|ve)", r"\1'\2", line)
+
         content.append(line)
 
     subtitleBlock["content"] = content
