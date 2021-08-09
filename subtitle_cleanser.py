@@ -26,8 +26,8 @@ def getNextSubtitleBlock(subsFile):
 
     Returns
     -------
-    Dictionary. The subtitleBlock containing the timestamp and content.
-    If EOF is reached, returns None instead.
+    Dictionary. The subtitleBlock containing the timestamp, content
+    and preceding-hyphens. If EOF is reached, returns None instead.
     """
     subtitleBlock = {
         "timestamp": "",
@@ -73,12 +73,13 @@ def removeUnwantedContent(subtitleBlock):
 
     Parameters
     ----------
-    subtitleBlock: Dictionary. The subtitleBlock containing the timestamp and content.
+    subtitleBlock: Dictionary. The subtitleBlock containing
+    the timestamp, content and preceding-hyphens.
 
     Returns
     -------
-    Dictionary. The subtitleBlock containing the timestamp and content,
-                after all unwanted content has been removed.
+    Dictionary. The subtitleBlock containing the timestamp, content
+    and preceding-hyphens after all unwanted content has been removed.
     """
     content = []
 
