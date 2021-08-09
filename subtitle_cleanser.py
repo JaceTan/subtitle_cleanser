@@ -69,8 +69,7 @@ def getNextSubtitleBlock(subsFile):
 def removeBracketedContent(subtitleBlock):
     """
     Checks the contents of a subtitleBlock and removes all content in
-    brackets like (speaking Russian), [explosion], ♪ Lyrics ♪. This
-    will also remove markup tags like <i></i>, but leave the content.
+    brackets like (speaking Russian), [explosion], ♪ Lyrics ♪ and <i>.
 
     Parameters
     ----------
@@ -79,7 +78,7 @@ def removeBracketedContent(subtitleBlock):
     Returns
     -------
     Dictionary. The subtitleBlock containing the timestamp and content,
-                after all bracketed content and markup tags have been removed.
+                after all bracketed content have been removed.
     """
     content = []
 
@@ -90,8 +89,8 @@ def removeBracketedContent(subtitleBlock):
         # Remove all square bracket [] pairs if any
         line = re.sub("\[.*\]", "", line).strip()
 
-        # Remove all angular bracket <></> pairs if any, but leave content between them
-        line = re.sub("\<.*\>(.*)\<\/.*\>", r"\1", line).strip()
+        # Remove all angular bracket <> pairs if any
+        line = re.sub("<.*?>", "", line).strip()
 
         # Remove all musical notes ♪ ♪ pairs if any
         line = re.sub("♪", "", line).strip()
