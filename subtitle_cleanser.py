@@ -4,8 +4,8 @@ import re
 
 def getNextSubtitleBlock(subsFile):
     """
-    Reads the few next lines of the subtitle file to
-    identify, create and return a subtitleBlock dictionary.
+    Reads the few next lines of the subtitle file to identify, create
+    and return a subtitleBlock Dictionary, or None if EOF is reached.
 
     A subtitle block should have the following pattern:
     Subtitle Block Number
@@ -27,6 +27,7 @@ def getNextSubtitleBlock(subsFile):
     Returns
     -------
     Dictionary. The subtitleBlock containing the timestamp and content.
+    If EOF is reached, returns None instead.
     """
     subtitleBlock = {
         "timestamp": "",
@@ -38,14 +39,18 @@ def getNextSubtitleBlock(subsFile):
         lineCounter += 1
 
         # Read the next line
-        nextline = subsFile.readline().strip()
+        nextline = subsFile.readline()
+
+        # End of File
+        if nextline == "":
+            return None
 
         # End of the subtitle block
-        if nextline == "":
+        if re.match("\n", nextline):
             break
 
-        # If nextline contains a Byte Order Mark (BOM), remove it
-        nextline = re.sub("\uFEFF", "", nextline)
+        # Remove Byte Order Mark (BOM) (if any) and surrounding whitespce
+        nextline = re.sub("\uFEFF", "", nextline).strip()
 
         # Ignore the subtitle block number
         if lineCounter == 1 and nextline.isnumeric():
