@@ -66,10 +66,9 @@ def getNextSubtitleBlock(subsFile):
 
     return subtitleBlock
 
-def removeBracketedContent(subtitleBlock):
+def removeUnwantedContent(subtitleBlock):
     """
-    Checks the contents of a subtitleBlock and removes all content in
-    brackets like (speaking Russian), [explosion], ♪ Lyrics ♪ and <i>.
+    Checks the contents of a subtitleBlock and removes all unwanted content.
 
     Parameters
     ----------
@@ -78,7 +77,7 @@ def removeBracketedContent(subtitleBlock):
     Returns
     -------
     Dictionary. The subtitleBlock containing the timestamp and content,
-                after all bracketed content has been removed.
+                after all unwanted content has been removed.
     """
     content = []
 
@@ -95,30 +94,7 @@ def removeBracketedContent(subtitleBlock):
         # Remove all musical notes ♪ ♪ pairs if any
         line = re.sub("♪", "", line).strip()
 
-        # Only add if line still has any characters
-        if line:
-            content.append(line)
-
-    subtitleBlock["content"] = content
-    return subtitleBlock
-
-def removeSpeakerName(subtitleBlock):
-    """
-    Checks the contents of a subtitleBlock and removes
-    all speaker names and their corresponding colon.
-
-    Parameters
-    ----------
-    subtitleBlock: Dictionary. The subtitleBlock containing the timestamp and content.
-
-    Returns
-    -------
-    Dictionary. The subtitleBlock containing the timestamp and content,
-                after all speaker names and colons have been removed.
-    """
-    content = []
-
-    for line in subtitleBlock["content"]:
+        # Remove speaker's name and corresponding colon if any
         line = re.sub("^\w+:", "", line).strip()
 
         # Only add if line still has any characters
@@ -148,9 +124,8 @@ def main():
         if not subtitleBlock:
             break
 
-        # Run the content lines through multiple stages of cleansing
-        subtitleBlock = removeBracketedContent(subtitleBlock)
-        subtitleBlock = removeSpeakerName(subtitleBlock)
+        # Remove unwanted content
+        subtitleBlock = removeUnwantedContent(subtitleBlock)
         print(subtitleBlock)
 
         # If there's no more content, skip to the next subtitleBlock
