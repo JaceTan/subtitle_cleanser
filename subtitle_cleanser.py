@@ -138,7 +138,7 @@ def cleanupContent(subtitleBlock):
         line = re.sub("([\s,?!-*@]){2}", r"\1", line)
 
         # Fix exception for double periods vs ellipses
-        line = re.sub("\.\.[^\.]", ".", line)
+        line = re.sub("[^\.]\.\.[^\.]", ".", line)
 
         # Add spaces after sentence puntuation
         line = re.sub("([\.,?!])(\w)", r"\1 \2", line)
