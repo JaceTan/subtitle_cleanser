@@ -110,6 +110,28 @@ def removeUnwantedContent(subtitleBlock):
     subtitleBlock["content"] = content
     return subtitleBlock
 
+def cleanupContent(subtitleBlock):
+    """
+    Checks the contents of a subtitleBlock and cleans up minor
+    errors and inconsistencies including but not limited to:
+    - capitalizing pronouns (Sherlock, not sherlock)
+    - removing spaces between contractions (don't, not don 't)
+    - double hyphens (--)
+    - removing spaces before periods
+    - adding spaces after periods
+
+    Parameters
+    ----------
+    subtitleBlock: Dictionary. The subtitleBlock containing
+    the timestamp, content and preceding-hyphens.
+
+    Returns
+    -------
+    Dictionary. The subtitleBlock containing the timestamp, content,
+    and preceding-hyphens after all cleanup has been performed.
+    """
+    return subtitleBlock
+
 def main():
     # Open the subtitle file
     # Make sure the subtitle file is in the same level as this file
