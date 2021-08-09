@@ -115,6 +115,8 @@ def main():
     subtitleBlock = getNextSubtitleBlock(subsFile)
 
     # Run the content lines through multiple stages of cleansing
+    subtitleBlock = removeBracketedContent(subtitleBlock)
+
     # Determine if there's any content lines left
     # If yes, write to a new file
     # If no, skip the whole block
