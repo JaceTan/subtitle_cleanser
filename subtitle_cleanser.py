@@ -32,6 +32,7 @@ def getNextSubtitleBlock(subsFile):
     subtitleBlock = {
         "timestamp": "",
         "content": [],
+        "preceding-hyphens": False,
     }
 
     lineCounter = 0 # Limit 7 lines read to prevent reading until the end of file
@@ -96,6 +97,11 @@ def removeUnwantedContent(subtitleBlock):
 
         # Remove speaker's name and corresponding colon if any
         line = re.sub("^\w+:", "", line).strip()
+
+        # Record and remove preceding hyphens if any
+        if re.match("^-", line):
+            subtitleBlock["preceding-hyphens"] = True
+            line = re.sub("^-", "", line).strip()
 
         # Only add if line still has any characters
         if line:
