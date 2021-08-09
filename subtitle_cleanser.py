@@ -159,6 +159,7 @@ def main():
     # Open the subtitle file
     # Make sure the subtitle file is in the same level as this file
     filename = "24 Hurt Me, Hurt You.srt"
+    outputFilename = filename.replace(".", "-cleansed.")
 
     # Check that subsFile can be read
     try:
@@ -167,6 +168,7 @@ def main():
         print("Unable to find or open the file: {}.".format(filename))
         return
 
+    subtitleBlockIndex = 0
     while True:
         # Read enough lines for the first block
         subtitleBlock = getNextSubtitleBlock(subsFile)
@@ -177,7 +179,6 @@ def main():
 
         # Remove unwanted content
         subtitleBlock = removeUnwantedContent(subtitleBlock)
-        print(subtitleBlock)
 
         # If there's no more content, skip to the next subtitleBlock
         if subtitleBlock["content"] == []:
@@ -187,6 +188,14 @@ def main():
         subtitleBlock = cleanupContent(subtitleBlock)
 
         # Process remaning content to have even lines
-        # Write remaining to a new file
+
+        # Write remaining content to a separate file
+        subtitleBlockIndex += 1
+        with open(outputFilename, "a+") as outputFile:
+            if subtitleBlockIndex > 1:
+                outputFile.write("\n\n")
+            outputFile.write(str(subtitleBlockIndex) + "\n")
+            outputFile.write(subtitleBlock["timestamp"] + "\n")
+            outputFile.write("\n".join(subtitleBlock["content"]))
 
 main()
