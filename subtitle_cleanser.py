@@ -183,6 +183,9 @@ def main():
         if subtitleBlock["content"] == []:
             continue
 
+        # Cleanup minor mistakes in content
+        subtitleBlock = cleanupContent(subtitleBlock)
+
         # Process remaning content to have even lines
         # Write remaining to a new file
 
