@@ -43,7 +43,7 @@ def getNextSubtitleBlock(subsFile):
         nextline = subsFile.readline()
 
         # End of File
-        if nextline == "":
+        if lineCounter == 1 and nextline == "":
             return None
 
         # End of the subtitle block
