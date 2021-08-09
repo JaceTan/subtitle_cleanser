@@ -116,6 +116,16 @@ def removeSpeakerName(subtitleBlock):
     Dictionary. The subtitleBlock containing the timestamp and content,
                 after all speaker names and colons have been removed.
     """
+    content = []
+
+    for line in subtitleBlock["content"]:
+        line = re.sub("^\w+:", "", line).strip()
+
+        # Only add if line still has any characters
+        if line:
+            content.append(line)
+
+    subtitleBlock["content"] = content
     return subtitleBlock
 
 def main():
@@ -140,6 +150,7 @@ def main():
 
         # Run the content lines through multiple stages of cleansing
         subtitleBlock = removeBracketedContent(subtitleBlock)
+        subtitleBlock = removeSpeakerName(subtitleBlock)
         print(subtitleBlock)
 
         # If there's no more content, skip to the next subtitleBlock
