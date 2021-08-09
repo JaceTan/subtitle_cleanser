@@ -93,7 +93,8 @@ def removeUnwantedContent(subtitleBlock):
         # Remove all angular bracket <> pairs if any
         line = re.sub("<.*?>", "", line).strip()
 
-        # Remove all musical notes ♪ ♪ pairs if any
+        # Remove all musical notes ♪ ♪ pairs and single musical notes if any
+        line = re.sub("♪.*♪", "", line).strip()
         line = re.sub("♪", "", line).strip()
 
         # Remove speaker's name and corresponding colon if any
