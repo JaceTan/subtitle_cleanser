@@ -62,6 +62,23 @@ def getNextSubtitleBlock(subsFile):
 
     return subtitleBlock
 
+def removeBracketedContent(subtitleBlock):
+    """
+    Checks the contents of a subtitleBlock and removes all content in
+    brackets like (speaking Russian), [explosion], ♪ Lyrics ♪. This
+    will also remove markup tags like <i></i>, but leave the content.
+
+    Parameters
+    ----------
+    subtitleBlock: Dictionary. The subtitleBlock containing the timestamp and content.
+
+    Returns
+    -------
+    Dictionary. The subtitleBlock containing the timestamp and content,
+                after all bracketed content and markup tags have been removed.
+    """
+    return subtitleBlock
+
 def main():
     # Open the subtitle file
     # Make sure the subtitle file is in the same level as this file
