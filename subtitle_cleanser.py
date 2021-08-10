@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import constants
 import re
 
 def getNextSubtitleBlock(subsFile):
@@ -83,6 +84,14 @@ def verifyContent(subtitleBlock):
     Boolean. True if the content is actual content. False
     if the content is random junk like Title or Advertising.
     """
+    for pattern in constants.JUNK_PATTERNS:
+        iterator = re.compile(pattern)
+        matches = list(filter(iterator.search, subtitleBlock["content"]))
+        if len(matches) > 0:
+            print(matches)
+            return False
+
+    return True
 
 def removeUnwantedContent(subtitleBlock):
     """
