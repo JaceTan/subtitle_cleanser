@@ -203,6 +203,10 @@ def main():
         if not subtitleBlock:
             break
 
+        # Skip if content is non-content like Title, Advertising, etc
+        if not verifyContent(subtitleBlock):
+            continue
+
         # Remove unwanted content
         subtitleBlock = removeUnwantedContent(subtitleBlock)
 
