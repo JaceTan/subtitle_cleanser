@@ -67,6 +67,23 @@ def getNextSubtitleBlock(subsFile):
 
     return subtitleBlock
 
+def verifyContent(subtitleBlock):
+    """
+    Checks the contents of a subtitleBlock and determines if it's
+    actual content or just junk like Title or Advertising. Uses the
+    JUNK_PATTERNS constant in the constants.py file as a database.
+
+    Parameters
+    ----------
+    subtitleBlock: Dictionary. The subtitleBlock containing
+    the timestamp, content and preceding-hyphens.
+
+    Returns
+    -------
+    Boolean. True if the content is actual content. False
+    if the content is random junk like Title or Advertising.
+    """
+
 def removeUnwantedContent(subtitleBlock):
     """
     Checks the contents of a subtitleBlock and removes all unwanted content.
