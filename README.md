@@ -20,12 +20,12 @@ This script will:
 - Add spaces after sentence punctuation e.g. "This is a sentence part,this is the other part.This is a new sentence." --> "This is a sentence part, this is the other part. This is a new sentence."
 - Replace double symbols and double spaces with single symbols (ignores ellipses `...`) e.g. "Wait... You  can't do--" --> "Wait... You can't do-"
 - Removes unnecessary spaces between common contractions e.g. "can 't" --> "can't"
+- Removes subtitle blocks that are non-content like Advertising or Titles based on a custom list of JUNK_PATTERNS that can be expanded upon over time
 
 ### Future Features
 - Appropriate Capitalizing
 - Typo detection and fixes
 - Line balancing
-- Remove subtitle blocks that are non-content like Advertising or Titles
 
 # Changelog
 <b>10 Aug 2021</b>
