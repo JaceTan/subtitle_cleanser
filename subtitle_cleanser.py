@@ -88,7 +88,6 @@ def verifyContent(subtitleBlock):
         iterator = re.compile(pattern)
         matches = list(filter(iterator.search, subtitleBlock["content"]))
         if len(matches) > 0:
-            print(matches)
             return False
 
     return True
