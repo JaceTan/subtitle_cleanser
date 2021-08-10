@@ -28,6 +28,11 @@ This script will:
 - Remove subtitle blocks that are non-content like Advertising or Titles
 
 # Changelog
+<b>10 Aug 2021</b>
+- Added `verifyContent` func with detailed docstring and logic to detect junk content
+- Added `constants.py` file with a list of JUNK_PATTERNS and used it in `verifyContent` func
+- Added logic to skip over non-content `subtitleBlock`s based on results from `verifyContent`
+
 <b>09 Aug 2021</b>
 - Added `removeUnwantedContent` func with detailed docstring and logic to remove all unwanted content like bracketed content, speaker names with colons, and preceding hyphens
 - Updated `getNextSubtitleBlock` to detect end of file and return `None`
