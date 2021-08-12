@@ -34,6 +34,7 @@ This script will:
 <b>12 Aug 2021</b>
 - Added 2 new patterns to `JUNK_PATTERNS`
 - Updated regex to ignore numbers before colons that are part of times
+- Updated regex to ignore the punctuation that immediately precedes a speaker name with colon
 
 <b>10 Aug 2021</b>
 - Added `verifyContent` func with detailed docstring and logic to detect junk content
