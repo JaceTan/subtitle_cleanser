@@ -181,12 +181,11 @@ def cleanupContent(subtitleBlock):
     return subtitleBlock
 
 def main():
-    # Open the subtitle file
     # Make sure the subtitle file is in the same level as this file
-    filename = "24 Hurt Me, Hurt You.srt"
+    filename = ""
     outputFilename = filename.replace(".", "-cleansed.")
 
-    # Check that subsFile can be read
+    # Check that subsFile can be opened and read
     try:
         subsFile = open(filename, "r")
     except FileNotFoundError:
