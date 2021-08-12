@@ -169,6 +169,9 @@ def cleanupContent(subtitleBlock):
         # Add a space after sentence puntuation
         line = re.sub("([\.,?!])(\w)", r"\1 \2", line)
 
+        # Add space between a small letter and a capital letter (indicates joined words)
+        line = re.sub("([a-z])([A-Z])", r"\1 \2", line)
+
         # Remove a space before sentence punctuation
         line = re.sub("(\w)\s([\.,?!])", r"\1\2", line)
 
