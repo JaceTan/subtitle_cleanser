@@ -3,5 +3,7 @@ JUNK_PATTERNS = [
     "^Original Air Date on",
     "sync, corrected by",
     "Advertise your product or brand here",
-    "Craving big poker?"
+    "Craving big poker?",
+    "Captioning sponsored",
+    "Captioned by"
 ]
