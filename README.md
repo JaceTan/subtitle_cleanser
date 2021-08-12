@@ -18,6 +18,7 @@ This script will:
 - Remove names of speakers and their corresponding colon `:` e.g. "Jace: Hello World!" --> "Hello World!" (ignores numbers since they're part of timings e.g. "4:00")
 - Remove spaces before sentence punctuation e.g. "This is a sentence part , this is the other part ." --> "This is a sentence part, this is the other part."
 - Add spaces after sentence punctuation e.g. "This is a sentence part,this is the other part.This is a new sentence." --> "This is a sentence part, this is the other part. This is a new sentence."
+- Add spaces between a small letter followed by a capial letter as this usually indicates joined words e.g. "Previously onElementary" --> "Previously on Elementary"
 - Replace double symbols and double spaces with single symbols (ignores ellipses `...`) e.g. "Wait... You  can't do--" --> "Wait... You can't do-"
 - Removes unnecessary spaces between common contractions e.g. "can 't" --> "can't"
 - Removes subtitle blocks that are non-content like Advertising or Titles based on a custom list of `JUNK_PATTERNS` that can be expanded upon over time
