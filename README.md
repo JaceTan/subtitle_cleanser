@@ -15,18 +15,19 @@ This script will:
 - Preserve timestamps
 - Remove brackets and their contents `()`, `[]`, `<>`
 - Remove musical notes and their contents (usually lyrics for background music)
-- Remove names of speakers and their corresponding colon `:` e.g. "Jace: Hello World!" --> "Hello World!"
+- Remove names of speakers and their corresponding colon `:` e.g. "Jace: Hello World!" --> "Hello World!" (ignores numbers since they're part of timings e.g. "4:00")
 - Remove spaces before sentence punctuation e.g. "This is a sentence part , this is the other part ." --> "This is a sentence part, this is the other part."
 - Add spaces after sentence punctuation e.g. "This is a sentence part,this is the other part.This is a new sentence." --> "This is a sentence part, this is the other part. This is a new sentence."
 - Replace double symbols and double spaces with single symbols (ignores ellipses `...`) e.g. "Wait... You  can't do--" --> "Wait... You can't do-"
 - Removes unnecessary spaces between common contractions e.g. "can 't" --> "can't"
-- Removes subtitle blocks that are non-content like Advertising or Titles based on a custom list of JUNK_PATTERNS that can be expanded upon over time
+- Removes subtitle blocks that are non-content like Advertising or Titles based on a custom list of `JUNK_PATTERNS` that can be expanded upon over time
 
 ### Future Features
 - Appropriate Capitalizing
 - Typo detection and fixes
 - Line balancing
-- Non-English characters
+- Handling of non-English characters
+- Combining short subtitle blocks into bigger blocks
 
 # Changelog
 <b>12 Aug 2021</b>
