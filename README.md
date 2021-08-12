@@ -26,11 +26,16 @@ This script will:
 - Appropriate Capitalizing
 - Typo detection and fixes
 - Line balancing
+- Non-English characters
 
 # Changelog
+<b>12 Aug 2021</b>
+- Added 2 new patterns to `JUNK_PATTERNS`
+- Updated regex to ignore numbers before colons that are part of times
+
 <b>10 Aug 2021</b>
 - Added `verifyContent` func with detailed docstring and logic to detect junk content
-- Added `constants.py` file with a list of JUNK_PATTERNS and used it in `verifyContent` func
+- Added `constants.py` file with a list of `JUNK_PATTERNS` and used it in `verifyContent` func
 - Added logic to skip over non-content `subtitleBlock`s based on results from `verifyContent`
 
 <b>09 Aug 2021</b>
