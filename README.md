@@ -28,6 +28,7 @@ This script will:
 - Line balancing
 - Handling of non-English characters
 - Combining short subtitle blocks into bigger blocks
+- Move ending periods inside closing quotes to be outside them unless the speaker is quoting the whole sentence.
 
 # Changelog
 <b>12 Aug 2021</b>
