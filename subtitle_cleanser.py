@@ -192,6 +192,22 @@ def cleanupContent(subtitleBlock):
     subtitleBlock["content"] = content
     return subtitleBlock
 
+def balanceContent(subtitleBlock):
+    """
+    Balances the content lines by combining them into single lines if able, or
+    by making them as even as possible. Adds back preceding hyphens if needed.
+
+    Parameters
+    ----------
+    subtitleBlock: Dictionary. The subtitleBlock containing
+    the timestamp, content and preceding-hyphens.
+
+    Returns
+    -------
+    Dictionary. The subtitleBlock containing the timestamp, content,
+    and preceding-hyphens after lines have been balanced.
+    """
+
 def main():
     # Make sure the subtitle file is in the same level as this file
     filename = ""
