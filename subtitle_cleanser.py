@@ -161,7 +161,7 @@ def cleanupContent(subtitleBlock):
 
     for line in subtitleBlock["content"]:
         # Fix double symbols and spaces except periods
-        line = re.sub(r"([\W])\1", r"\1", line)
+        line = re.sub(r"([^\w\.])\1", r"\1", line)
 
         # Fix exception for double periods vs ellipses
         line = re.sub("[^\.]\.\.[^\.]", ".", line)
