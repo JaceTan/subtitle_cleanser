@@ -109,7 +109,7 @@ def removeUnwantedContent(subtitleBlock):
     content = []
 
     for line in subtitleBlock["content"]:
-        # Remove all regualar () pairs if any
+        # Remove all round backet () pairs if any
         line = re.sub("\(.*\)", "", line).strip()
 
         # Remove all square bracket [] pairs if any
