@@ -220,6 +220,29 @@ def balanceContent(subtitleBlock):
         subtitleBlock["content"] = [singleLine]
         return subtitleBlock
 
+    # Split the line into 2 roughly even lines
+    midIndex = int(lineLength / 2)
+    line1 = singleLine[:midIndex]
+    line2 = singleLine[midIndex:]
+
+    # If line1 ends with a space or line2 begins with one, then line are already even
+    if line1.endswith(" ") or line2.startswith(" "):
+        subtitleBlock["content"] = [line1.strip(), line2.strip()]
+        return subtitleBlock
+
+    # The smaller part needs to join the bigger part
+    wordPart1 = line1.split(" ")[-1]
+    wordPart2 = line2.split(" ")[0]
+
+    # Shift wordPart2 to the end of line1 if it's smaller than wordPart1
+    if len(wordPart1) > len(wordPart2):
+        line1 = line1 + wordPart2
+        line2 = line2[len(wordPart2):].strip()
+    else: # Otherwise, move wordPart1 to the beginning of line2
+        line1 = line1[:-len(wordPart1)].strip()
+        line2 = wordPart1 + line2
+
+    subtitleBlock["content"] = [line1, line2]
     return subtitleBlock
 
 def main():
