@@ -23,7 +23,7 @@ This script will:
 - Removes unnecessary spaces between common contractions e.g. "can 't" --> "can't"
 - Removes subtitle blocks that are non-content like Advertising or Titles based on a custom list of `JUNK_PATTERNS` that can be expanded upon over time
 - Compress multi-lines that are 40 chars or less into single lines
-- Convert multi-lines into 2 roughly balanced lines 
+- Convert multi-lines into 2 roughly balanced lines
 
 ### Future Features
 - Appropriate Capitalizing
@@ -34,7 +34,7 @@ This script will:
 
 # Changelog
 <b>14 Aug 2021</b>
-- Shortened the pattern to recognize double symbols by using `\W` instead of a list of symbols
+- Shortened the pattern to recognize double symbols
 - Added logic to recognize acronyms, capitalize them and prevent them from having spaces added in the middle
 - Added logic to compress multi-lines that are 40 chars or less into single lines
 - Added logic to convert multi-lines into 2 roughly balanced lines
