@@ -17,7 +17,7 @@ This script will:
 - Remove musical notes and their contents (usually lyrics for background music)
 - Remove names of speakers and their corresponding colon `:` e.g. "Jace: Hello World!" --> "Hello World!" (ignores numbers since they're part of timings e.g. "4:00")
 - Remove spaces before sentence punctuation e.g. "This is a sentence part , this is the other part ." --> "This is a sentence part, this is the other part."
-- Add spaces after sentence punctuation e.g. "This is a sentence part,this is the other part.This is a new sentence." --> "This is a sentence part, this is the other part. This is a new sentence."
+- Add spaces after sentence punctuation (but respects and capitalizes acronyms) e.g. "This is a sentence part,made by j.t., which is me!This is a new sentence." --> "This is a sentence part, made by J.T., which is me! This is a new sentence."
 - Add spaces between a small letter followed by a capial letter as this usually indicates joined words e.g. "Previously onElementary" --> "Previously on Elementary"
 - Replace double symbols and double spaces with single symbols (ignores ellipses `...`) e.g. "Wait... You  can't do--" --> "Wait... You can't do-"
 - Removes unnecessary spaces between common contractions e.g. "can 't" --> "can't"
@@ -32,6 +32,10 @@ This script will:
 - Move ending periods inside closing quotes to be outside them unless the speaker is quoting the whole sentence.
 
 # Changelog
+<b>14 Aug 2021</b>
+- Shortened the pattern to recognize double symbols by using `\W` instead of a list of symbols
+- Added logic to recognize acronyms, capitalize them and prevent them from having spaces added in the middle
+
 <b>12 Aug 2021</b>
 - Added 2 new patterns to `JUNK_PATTERNS`
 - Updated regex to ignore numbers before colons that are part of times
