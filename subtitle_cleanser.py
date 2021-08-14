@@ -172,8 +172,8 @@ def cleanupContent(subtitleBlock):
             # Replace the acronym with a placeholder first
             line = line.replace(acronym.group(2), "__acronym__")
 
-        # Add a space after sentence puntuation
-        line = re.sub("([\.,?!])(\w)", r"\1 \2", line)
+        # Add a space after sentence punctuation
+        line = re.sub("([\.,?!])([A-Za-z])", r"\1 \2", line)
         if acronym:
             # Replace the placeholder with the uppercased acronym
             line = line.replace("__acronym__", acronym.group(2).upper())
