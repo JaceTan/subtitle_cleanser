@@ -167,16 +167,16 @@ def cleanupContent(subtitleBlock):
         line = re.sub("[^\.]\.\.[^\.]", ".", line)
 
         # Recognize acronyms if any
-        acronym = re.search("\W((\w\.){2,})", line)
+        acronym = re.search("(^|\W)((\w\.){2,})", line)
         if acronym:
             # Replace the acronym with a placeholder first
-            line = line.replace(acronym.group(1), "__acronym__")
+            line = line.replace(acronym.group(2), "__acronym__")
 
         # Add a space after sentence puntuation
         line = re.sub("([\.,?!])(\w)", r"\1 \2", line)
         if acronym:
             # Replace the placeholder with the uppercased acronym
-            line = line.replace("__acronym__", acronym.group(1).upper())
+            line = line.replace("__acronym__", acronym.group(2).upper())
 
         # Add a space between a small letter followed by a capital letter (indicates joined words)
         line = re.sub("([a-z])([A-Z])", r"\1 \2", line)
@@ -247,7 +247,7 @@ def balanceContent(subtitleBlock):
 
 def main():
     # Make sure the subtitle file is in the same level as this file
-    filename = ""
+    filename = "07 Sober Companions.srt"
     outputFilename = filename.replace(".", "-cleansed.")
 
     # Check that subsFile can be opened and read
