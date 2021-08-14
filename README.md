@@ -22,11 +22,12 @@ This script will:
 - Replace double symbols and double spaces with single symbols (ignores ellipses `...`) e.g. "Wait... You  can't do--" --> "Wait... You can't do-"
 - Removes unnecessary spaces between common contractions e.g. "can 't" --> "can't"
 - Removes subtitle blocks that are non-content like Advertising or Titles based on a custom list of `JUNK_PATTERNS` that can be expanded upon over time
+- Compress multi-lines that are 40 chars or less into single lines
+- Convert multi-lines into 2 roughly balanced lines 
 
 ### Future Features
 - Appropriate Capitalizing
 - Typo detection and fixes
-- Line balancing
 - Handling of non-English characters
 - Combining short subtitle blocks into bigger blocks
 - Move ending periods inside closing quotes to be outside them unless the speaker is quoting the whole sentence.
@@ -35,6 +36,8 @@ This script will:
 <b>14 Aug 2021</b>
 - Shortened the pattern to recognize double symbols by using `\W` instead of a list of symbols
 - Added logic to recognize acronyms, capitalize them and prevent them from having spaces added in the middle
+- Added logic to compress multi-lines that are 40 chars or less into single lines
+- Added logic to convert multi-lines into 2 roughly balanced lines
 
 <b>12 Aug 2021</b>
 - Added 2 new patterns to `JUNK_PATTERNS`
