@@ -211,10 +211,13 @@ def balanceContent(subtitleBlock):
         subtitleBlock["content"] = ["- " + line for line in subtitleBlock["content"]]
         return subtitleBlock
 
-    singleline = " ".join(subtitleBlock["content"])
+    # Combine all lines (regardless 2 or 3 lines) to make a single line
+    singleLine = " ".join(subtitleBlock["content"])
+    lineLength = len(singleLine)
 
-    if len(singleline) <= 40:
-        subtitleBlock["content"] = [singleline]
+    # If all chars can fit into a single line, work is done.
+    if lineLength <= 40:
+        subtitleBlock["content"] = [singleLine]
         return subtitleBlock
 
     return subtitleBlock
