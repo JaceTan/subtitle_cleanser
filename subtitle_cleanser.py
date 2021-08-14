@@ -207,6 +207,11 @@ def balanceContent(subtitleBlock):
     Dictionary. The subtitleBlock containing the timestamp, content,
     and preceding-hyphens after lines have been balanced.
     """
+    if subtitleBlock["preceding-hyphens"]:
+        subtitleBlock["content"] = ["- " + line for line in subtitleBlock["content"]]
+        return subtitleBlock
+
+    return subtitleBlock
 
 def main():
     # Make sure the subtitle file is in the same level as this file
