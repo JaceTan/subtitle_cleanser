@@ -249,6 +249,7 @@ def main():
         subtitleBlock = cleanupContent(subtitleBlock)
 
         # Process remaning content to have even lines
+        subtitleBlock = balanceContent(subtitleBlock)
 
         # Write remaining content to a separate file
         subtitleBlockIndex += 1
