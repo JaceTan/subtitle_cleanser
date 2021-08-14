@@ -211,6 +211,12 @@ def balanceContent(subtitleBlock):
         subtitleBlock["content"] = ["- " + line for line in subtitleBlock["content"]]
         return subtitleBlock
 
+    singleline = " ".join(subtitleBlock["content"])
+
+    if len(singleline) <= 40:
+        subtitleBlock["content"] = [singleline]
+        return subtitleBlock
+
     return subtitleBlock
 
 def main():
