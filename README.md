@@ -36,6 +36,7 @@ This script will:
 <b>14 Aug 2021</b>
 - Shortened the pattern to recognize double symbols
 - Added logic to recognize acronyms, capitalize them and prevent them from having spaces added in the middle
+- Added `balanceContent` func with detailed docstring and logic add back preceding hyphens if any
 - Added logic to compress multi-lines that are 40 chars or less into single lines
 - Added logic to convert multi-lines into 2 roughly balanced lines
 
