@@ -5,5 +5,6 @@ JUNK_PATTERNS = [
     "Advertise your product or brand here",
     "Craving big poker?",
     "Captioning sponsored",
-    "Captioned by"
+    "Captioned by",
+    "www.OpenSubtitles.org"
 ]
