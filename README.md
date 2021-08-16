@@ -13,8 +13,8 @@ You can drag the script to the same level as the subtitle script you want to cle
 This script will:
 - Re-number subtitle block numberings
 - Preserve timestamps
-- Remove brackets and their contents `()`, `[]`, `<>`
-- Remove musical notes and their contents (usually lyrics for background music)
+- Remove brackets and their contents `()`, `[]`, `<>`,
+- Remove musical notes `♪` and paragraph symbols `¶` and their contents (usually lyrics for background music)
 - Remove names of speakers and their corresponding colon `:` e.g. "Jace: Hello World!" --> "Hello World!" (ignores numbers since they're part of timings e.g. "4:00")
 - Remove spaces before sentence punctuation e.g. "This is a sentence part , this is the other part ." --> "This is a sentence part, this is the other part."
 - Add spaces after sentence punctuation (but respects and capitalizes acronyms) e.g. "This is a sentence part,made by j.t., which is me!This is a new sentence." --> "This is a sentence part, made by J.T., which is me! This is a new sentence."
@@ -33,6 +33,9 @@ This script will:
 - Move ending periods inside closing quotes to be outside them unless the speaker is quoting the whole sentence.
 
 # Changelog
+<b>16 Aug 2021</b>
+- Updated `removeUnwantedContent` func to remove paragraph symbols `¶`
+
 <b>14 Aug 2021</b>
 - Shortened the pattern to recognize double symbols
 - Added logic to recognize acronyms, capitalize them and prevent them from having spaces added in the middle
