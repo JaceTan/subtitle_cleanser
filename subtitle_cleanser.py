@@ -122,6 +122,9 @@ def removeUnwantedContent(subtitleBlock):
         line = re.sub("♪.*♪", "", line).strip()
         line = re.sub("♪", "", line).strip()
 
+        # Remove all paragraph symbol pairs ¶ ¶ and single ¶ paragraph symbols if any
+        line = re.sub("¶.*?¶", "", line).strip()
+
         # Remove speaker's name and corresponding colon if any
         line = re.sub("(^|[.,!?\s])[A-Za-z]+?:", r"\1", line).strip()
 
