@@ -1,10 +1,11 @@
 JUNK_PATTERNS = [
     "Elementary \d+x\d+",
-    "^Original Air Date on",
+    "[Aa]ir [Dd]ate",
     "sync, corrected by",
     "Advertise your product or brand here",
     "Craving big poker?",
     "Captioning sponsored",
     "Captioned by",
-    "www.OpenSubtitles.org"
+    "www.OpenSubtitles.org",
+    "Sync and corrections",
 ]
