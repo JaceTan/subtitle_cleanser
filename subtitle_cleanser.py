@@ -125,6 +125,9 @@ def removeUnwantedContent(subtitleBlock):
         # Remove all paragraph symbol pairs ¶ ¶ and single ¶ paragraph symbols if any
         line = re.sub("¶.*?¶", "", line).strip()
 
+        # Remove underscores that appear twice or more in a row
+        line = re.sub("[_]{2,}", "", line).strip()
+
         # Remove speaker's name and corresponding colon if any
         line = re.sub("(^|[.,!?\-\s])[A-Za-z]+?:", r"\1", line).strip()
 
