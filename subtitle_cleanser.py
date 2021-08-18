@@ -126,7 +126,7 @@ def removeUnwantedContent(subtitleBlock):
         line = re.sub("¶.*?¶", "", line).strip()
 
         # Remove speaker's name and corresponding colon if any
-        line = re.sub("(^|[.,!?\s])[A-Za-z]+?:", r"\1", line).strip()
+        line = re.sub("(^|[.,!?\-\s])[A-Za-z]+?:", r"\1", line).strip()
 
         # Record and remove preceding hyphens if any
         if re.match("^-", line):
