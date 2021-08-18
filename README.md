@@ -16,6 +16,7 @@ This script will:
 - Remove brackets and their contents `()`, `[]`, `<>`,
 - Remove musical notes `♪` and paragraph symbols `¶` and their contents (usually lyrics for background music)
 - Remove names of speakers and their corresponding colon `:` e.g. "Jace: Hello World!" --> "Hello World!" (ignores numbers since they're part of timings e.g. "4:00")
+- Remove underscores `_` that appear consecutively 2 or more times
 - Remove spaces before sentence punctuation e.g. "This is a sentence part , this is the other part ." --> "This is a sentence part, this is the other part."
 - Add spaces after sentence punctuation (but respects and capitalizes acronyms) e.g. "This is a sentence part,made by j.t., which is me!This is a new sentence." --> "This is a sentence part, made by J.T., which is me! This is a new sentence."
 - Add spaces between a small letter followed by a capial letter as this usually indicates joined words e.g. "Previously onElementary" --> "Previously on Elementary"
@@ -33,6 +34,10 @@ This script will:
 - Move ending periods inside closing quotes to be outside them unless the speaker is quoting the whole sentence.
 
 # Changelog
+<b>18 Aug 2021</b>
+- Added the hyphen symbol `-` as a possible prefix to speaker names
+- Updated `removeUnwantedContent` with logic to remove underscores that appear consecutively 2 or more times
+
 <b>16 Aug 2021</b>
 - Updated `removeUnwantedContent` func to remove paragraph symbols `¶`
 
