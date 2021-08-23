@@ -6,6 +6,7 @@ JUNK_PATTERNS = [
     "Craving big poker?",
     "Captioning sponsored",
     "Captioned by",
-    "www.OpenSubtitles.org",
+    "OpenSubtitles.org",
     "Sync and corrections",
+    "[Ss]ynced and corrected"
 ]
