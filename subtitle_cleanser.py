@@ -2,6 +2,7 @@
 
 import constants
 import re
+import sys
 
 def getNextSubtitleBlock(subsFile):
     """
@@ -253,7 +254,7 @@ def balanceContent(subtitleBlock):
 
 def main():
     # Make sure the subtitle file is in the same level as this file
-    filename = "07 Sober Companions.srt"
+    filename = sys.argv[1]
     outputFilename = filename.replace(".", "-cleansed.")
 
     # Check that subsFile can be opened and read
