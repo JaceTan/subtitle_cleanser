@@ -255,7 +255,7 @@ def balanceContent(subtitleBlock):
 def main():
     # Make sure the subtitle file is in the same level as this file
     filename = sys.argv[1]
-    outputFilename = filename.replace(".", "-cleansed.")
+    outputFilename = "-cleansed.".join(filename.rsplit(".", 1))
 
     # Check that subsFile can be opened and read
     try:
