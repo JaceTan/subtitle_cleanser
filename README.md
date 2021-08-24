@@ -7,7 +7,18 @@ Eventually, I hope to turn this into a useful tool with customizable options, to
 
 # Usage
 This is an executable Python script written in Python 3.7.
-You can drag the script to the same level as the subtitle script you want to cleanse, update the `filename` in the `main` func, and execute it from the command line. It will output a new file with the word "-cleansed" attached to the original file name in the same level.
+
+You can drag the script to the same level as the subtitle script you want to cleanse and execute it from the command line with the filename as a parameter. It will output a new file with the word "-cleansed" attached to the original file name in the same level. Currently, I've only tested it with `.srt` files, since that's the only subtitle file type I use. But it probably works with plaintext file type.
+
+Example:
+```
+$ ./subtitle_cleanser 12\ Meet\ Your\ Maker.srt
+$ ls -la
+...
+-rw-r--r--   1 jacetan  ***    71K Aug 24 13:34 12 Meet Your Maker-cleansed.srt
+-rwxrwxrwx   1 jacetan  ***    72K Aug 24 13:33 12 Meet Your Maker.srt
+-rwxr-xr-x   1 jacetan  ***   9.7K Aug 24 13:30 subtitle_cleanser.py
+```
 
 # Features
 This script will:
@@ -34,6 +45,10 @@ This script will:
 - Move ending periods inside closing quotes to be outside them unless the speaker is quoting the whole sentence.
 
 # Changelog
+<b>24 Aug 2021</b>
+- Added `sys.argv[1]` to allow specification of the filename from command line
+- Updated `outputFilename` to only replace the last period with "-cleansed." instead of all periods
+
 <b>18 Aug 2021</b>
 - Added the hyphen symbol `-` as a possible prefix to speaker names
 - Updated `removeUnwantedContent` with logic to remove underscores that appear consecutively 2 or more times
