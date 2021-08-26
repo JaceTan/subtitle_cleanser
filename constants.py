@@ -7,6 +7,7 @@ JUNK_PATTERNS = [
     "Captioning sponsored",
     "Captioned by",
     "OpenSubtitles.org",
+    "addic7ed.com",
     "Sync and corrections",
     "[Ss]ynced and corrected"
 ]
