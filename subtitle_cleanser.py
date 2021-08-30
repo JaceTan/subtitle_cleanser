@@ -127,7 +127,7 @@ def removeUnwantedContent(subtitleBlock):
         line = re.sub("¶.*?¶", "", line).strip()
 
         # Remove underscores that appear twice or more in a row
-        line = re.sub("[_]{2,}", "", line).strip()
+        line = re.sub("(^|\s)[_]+(\s|$)", "", line).strip()
 
         # Remove speaker's name and corresponding colon if any
         line = re.sub("(^|[.,!?\-\s])[A-Za-z]+?:", r"\1", line).strip()
