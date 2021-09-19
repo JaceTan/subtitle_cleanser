@@ -28,13 +28,12 @@ def getNextSubtitleBlock(subsFile):
 
     Returns
     -------
-    Dictionary. The subtitleBlock containing the timestamp, content
-    and preceding-hyphens. If EOF is reached, returns None instead.
+    Dictionary. The subtitleBlock containing the timestamp and content.
+    If EOF is reached, returns None instead.
     """
     subtitleBlock = {
         "timestamp": "",
-        "content": [],
-        "preceding-hyphens": False,
+        "content": []
     }
 
     lineCounter = 0 # Limit 7 lines read to prevent reading until the end of file
@@ -77,8 +76,8 @@ def verifyContent(subtitleBlock):
 
     Parameters
     ----------
-    subtitleBlock: Dictionary. The subtitleBlock containing
-    the timestamp, content and preceding-hyphens.
+    subtitleBlock: Dictionary. The subtitleBlock
+    containing the timestamp and content.
 
     Returns
     -------
@@ -99,13 +98,13 @@ def removeUnwantedContent(subtitleBlock):
 
     Parameters
     ----------
-    subtitleBlock: Dictionary. The subtitleBlock containing
-    the timestamp, content and preceding-hyphens.
+    subtitleBlock: Dictionary. The subtitleBlock
+    containing the timestamp and content.
 
     Returns
     -------
-    Dictionary. The subtitleBlock containing the timestamp, content
-    and preceding-hyphens after all unwanted content has been removed.
+    Dictionary. The subtitleBlock containing the timestamp
+    and content after all unwanted content has been removed.
     """
     content = []
 
@@ -137,11 +136,6 @@ def removeUnwantedContent(subtitleBlock):
         # Remove speaker's name and corresponding colon if any
         line = re.sub("(^|[.,!?\-\s])[A-Za-z]+?:", r"\1", line).strip()
 
-        # Record and remove preceding hyphens if any
-        if re.match("^-", line):
-            subtitleBlock["preceding-hyphens"] = True
-            line = re.sub("^-", "", line).strip()
-
         # Only add if line still has any characters
         if line:
             content.append(line)
@@ -161,13 +155,13 @@ def cleanupContent(subtitleBlock):
 
     Parameters
     ----------
-    subtitleBlock: Dictionary. The subtitleBlock containing
-    the timestamp, content and preceding-hyphens.
+    subtitleBlock: Dictionary. The subtitleBlock
+    containing the timestamp and content.
 
     Returns
     -------
-    Dictionary. The subtitleBlock containing the timestamp, content,
-    and preceding-hyphens after all cleanup has been performed.
+    Dictionary. The subtitleBlock containing the timestamp
+    and content after all cleanup has been performed.
     """
     content = []
 
@@ -218,23 +212,19 @@ def cleanupContent(subtitleBlock):
 
 def balanceContent(subtitleBlock):
     """
-    Balances the content lines by combining them into single lines if able, or
-    by making them as even as possible. Adds back preceding hyphens if needed.
+    Balances the content lines by combining them into single
+    lines if able, or by making them as even as possible.
 
     Parameters
     ----------
-    subtitleBlock: Dictionary. The subtitleBlock containing
-    the timestamp, content and preceding-hyphens.
+    subtitleBlock: Dictionary. The subtitleBlock
+    containing the timestamp and content.
 
     Returns
     -------
-    Dictionary. The subtitleBlock containing the timestamp, content,
-    and preceding-hyphens after lines have been balanced.
+    Dictionary. The subtitleBlock containing the timestamp
+    and content after lines have been balanced.
     """
-    if subtitleBlock["preceding-hyphens"]:
-        subtitleBlock["content"] = ["- " + line for line in subtitleBlock["content"]]
-        return subtitleBlock
-
     # Combine all lines (regardless 2 or 3 lines) to make a single line
     singleLine = " ".join(subtitleBlock["content"])
     lineLength = len(singleLine)
