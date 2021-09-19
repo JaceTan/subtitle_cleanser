@@ -45,6 +45,17 @@ This script will:
 - Move ending periods inside closing quotes to be outside them unless the speaker is quoting the whole sentence.
 
 # Changelog
+<b>19 Sep 2021</b>
+- Fixed regex mistake with paragraph symbol
+- Added pattern to detect and remove star symbol pairs `* *` and single star symbols `*`
+- Added `SMALL_CAPS_EXCEPTIONS` to store exceptions to the rule that inserts a space between a small letter and a capital letter
+- Added logic to handle exceptions to the smallCAPS rule
+- Removed logic for handling preceding-hyphens
+- Updated regex pattern to remove speaker name and colon only if the preceding word starts with a capital letter that indicates a person's name
+- Added logic to remove multi-line unwanted content
+- Added a new `handlePrecedingHyphens` func and added it to main func
+- Called `balanceContent` only for content that does not have preceding hyphens
+
 <b>24 Aug 2021</b>
 - Added `sys.argv[1]` to allow specification of the filename from command line
 - Updated `outputFilename` to only replace the last period with "-cleansed." instead of all periods
