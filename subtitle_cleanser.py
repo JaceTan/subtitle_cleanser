@@ -136,6 +136,10 @@ def removeUnwantedContent(subtitleBlock):
         # Remove speaker's name and corresponding colon if any
         line = re.sub("(^|[.,!?\-\s])[A-Z][A-Za-z]+?:", r"\1", line).strip()
 
+        # Remove lone symbols that are non-Alphanumeric
+        if len(line) == 1 and re.search("[^A-Za-z0-9]", line):
+            line = ""
+
         # Only add if line still has any characters
         if line:
             content.append(line)
