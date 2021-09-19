@@ -279,7 +279,7 @@ def balanceContent(subtitleBlock):
     line1 = singleLine[:midIndex]
     line2 = singleLine[midIndex:]
 
-    # If line1 ends with a space or line2 begins with one, then line are already even
+    # If line1 ends with a space or line2 begins with one, then lines are already even
     if line1.endswith(" ") or line2.startswith(" "):
         subtitleBlock["content"] = [line1.strip(), line2.strip()]
         return subtitleBlock
@@ -346,8 +346,9 @@ def main():
         # Handle preceding hyphens
         subtitleBlock = handlePrecedingHyphens(subtitleBlock)
 
-        # Process remaning content to have even lines
-        subtitleBlock = balanceContent(subtitleBlock)
+        # If there are no preceding hyphens, balance the content to have even lines
+        if not subtitleBlock["content"][0].startswith("-"):
+            subtitleBlock = balanceContent(subtitleBlock)
 
         # Write remaining content to a separate file
         subtitleBlockIndex += 1
