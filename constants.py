@@ -11,3 +11,7 @@ JUNK_PATTERNS = [
     "Sync and corrections",
     "[Ss]ynced and corrected"
 ]
+
+SMALL_CAPS_EXCEPTIONS = [
+    "DiPierro"
+]
