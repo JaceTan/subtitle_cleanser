@@ -291,6 +291,15 @@ def main():
         if subtitleBlock["content"] == []:
             continue
 
+        # Check and remove multi-line unwanted content
+        if len(subtitleBlock["content"]) > 1:
+            tempBlock = removeUnwantedContent({
+                "timestamp": "",
+                "content": [" ".join(subtitleBlock["content"])]
+            })
+            if tempBlock["content"] == []:
+                continue
+
         # Cleanup minor mistakes in content
         subtitleBlock = cleanupContent(subtitleBlock)
 
