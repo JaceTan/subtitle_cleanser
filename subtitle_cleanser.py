@@ -210,6 +210,46 @@ def cleanupContent(subtitleBlock):
     subtitleBlock["content"] = content
     return subtitleBlock
 
+def handlePrecedingHyphens(subtitleBlock):
+    """
+    Finds the best way to handle lines with preceding hyphens,
+    whether that is adding/removing hyphens or doing nothing.
+
+    Parameters
+    ----------
+    subtitleBlock: Dictionary. The subtitleBlock
+    containing the timestamp and content.
+
+    Returns
+    -------
+    Dictionary. The subtitleBlock containing the timestamp
+    and content after preceding hyphens have been handled.
+    """
+    # Remove preceding hypen if there's only 1 line
+    if len(subtitleBlock["content"]) == 1:
+        subtitleBlock["content"] = [re.sub("^-", "", subtitleBlock["content"][0]).strip()]
+        return subtitleBlock
+
+    precedingHyphens = [line.startswith("-") for line in subtitleBlock["content"]]
+
+    # If both lines have preceding hyphens, or do not have preceding hyphens, return it as is
+    if len(set(precedingHyphens)) == 1:
+        return subtitleBlock
+
+    if precedingHyphens == [True, False]:
+        # 2 line content where only 1st line has hyphen -> remove the preceding hyphen
+        subtitleBlock["content"][0] = re.sub("^-", "", subtitleBlock["content"][0]).strip()
+    elif precedingHyphens == [False, True]:
+        # 2 line content where only 2nd line has hyphen -> add preceding hyphen to 1st line
+        subtitleBlock["content"][0] = "- " + subtitleBlock["content"][0]
+
+    # Alert user to manually handle content with more than 2 lines
+    if len(precedingHyphens) > 2:
+        print("Cannot handle content with more than 2 lines")
+        print(subtitleBlock)
+
+    return subtitleBlock
+
 def balanceContent(subtitleBlock):
     """
     Balances the content lines by combining them into single
@@ -302,6 +342,9 @@ def main():
 
         # Cleanup minor mistakes in content
         subtitleBlock = cleanupContent(subtitleBlock)
+
+        # Handle preceding hyphens
+        subtitleBlock = handlePrecedingHyphens(subtitleBlock)
 
         # Process remaning content to have even lines
         subtitleBlock = balanceContent(subtitleBlock)
