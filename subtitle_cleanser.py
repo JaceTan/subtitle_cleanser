@@ -127,6 +127,10 @@ def removeUnwantedContent(subtitleBlock):
         line = re.sub("¶.*¶", "", line).strip()
         line = re.sub("¶", "", line).strip()
 
+        # Remove all star symbol pairs * * and single * star symbols if any
+        line = re.sub("\*.*\*", "", line).strip()
+        line = re.sub("\*", "", line).strip()
+
         # Remove underscores that appear twice or more in a row
         line = re.sub("(^|\s)[_]+(\s|$)", "", line).strip()
 
