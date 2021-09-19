@@ -191,7 +191,19 @@ def cleanupContent(subtitleBlock):
             line = line.replace("__acronym__", acronym.group(2).upper())
 
         # Add a space between a small letter followed by a capital letter (indicates joined words)
+        # But ignore exceptions if they're in the SMALL_CAPS_EXCEPTIONS like "McDonald"
+        exceptions = []
+        index = -1
+        for exception in constants.SMALL_CAPS_EXCEPTIONS:
+            if exception in line:
+                index += 1
+                line = line.replace(exception, "__exception{}__".format(index))
+                exceptions.append(exception)
         line = re.sub("([a-z])([A-Z])", r"\1 \2", line)
+        index = -1
+        for exception in exceptions:
+            index += 1
+            line = line.replace("__exception{}__".format(index), exceptions[index])
 
         # Remove a space before sentence punctuation
         line = re.sub("(\w)\s([\.,?!])", r"\1\2", line)
